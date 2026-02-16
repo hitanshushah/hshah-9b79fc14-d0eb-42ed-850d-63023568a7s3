@@ -1,0 +1,16 @@
+node_modules
+dist
+.nx
+.git
+*.md
+.env
+.env.local
+*.log
+coverage
+.angular
+apps/api-e2e
+apps/dashboard-e2e
+*.spec.ts
+*.test.ts
+__tests__
+.history

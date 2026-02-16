@@ -1,0 +1,28 @@
+# Build stage
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+COPY nx.json tsconfig.base.json ./
+COPY apps/dashboard ./apps/dashboard
+COPY libs ./libs
+
+RUN npm install --legacy-peer-deps
+
+RUN npx nx build dashboard --configuration=production
+
+# Run stage
+FROM nginx:alpine
+
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=builder /app/dist/apps/dashboard/browser /usr/share/nginx/html
+
+COPY apps/dashboard/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+RUN echo 'server { listen 80; root /usr/share/nginx/html; index index.html; location / { try_files $uri $uri/ /index.html; } }' > /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]
