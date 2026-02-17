@@ -188,6 +188,18 @@ npm run build:dashboard
 - **categories** – `id`, `user_id` (nullable), `category_name`, `created_at`. Optional user-scoped categories.
 - **audit_logs** – `id`, `user_id`, `action`, `resource_type`, `resource_id`, `timestamp`, `metadata` (JSONB). Audit trail for task and other actions.
 
+### Pre Seeded Users:
+
+- **admin@example.com** / **admin123** (role: owner)
+- **admin2@example.com** / **admin123** (role: admin)
+- **admin3@example.com** / **admin123** (role: admin)
+- **usera@example.com** / **password** (role: viewer)
+- **userb@example.com** / **password** (role: viewer)
+- **userc@example.com** / **password** (role: viewer)
+- **userd@example.com** / **password** (role: viewer)
+- **usere@example.com** / **password** (role: viewer)
+- **userf@example.com** / **password** (role: viewer)
+
 ### ERD (Entity-Relationship Diagram)
 
 ```mermaid
