@@ -2,6 +2,7 @@
 
 A full-stack task management application with role-based access control (RBAC), built in an NX monorepo with NestJS (API) and Angular (dashboard).
 
+Live Demo: [https://task.app.hitanshushah.com/](https://task.app.hitanshushah.com/)
 ---
 
 ## Table of Contents
